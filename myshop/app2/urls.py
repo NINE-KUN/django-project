@@ -18,7 +18,23 @@ urlpatterns = [
     # 后面跟任意位整数路由且第2个参数可以是字母、数字、下划线http://127.0.0.1:8000/app2/list/1&key=a/
     re_path('app2/list/(?P<page>\d+)&key=(?P<key>\w+)/', views.article_page, name='article_page'),
 
-    #反向解析路由
-    path('app2/url_reverse/',views.url_reverse,name='app2_url_reverse'),
+    # 反向解析路由
+    path('app2/url_reverse/', views.url_reverse, name='app2_url_reverse'),
+
+    # HttpRequest用法
+    path('app2/test_get/', views.test_get),
+
+    # 获取post传递的值
+    path('app2/test_post/', views.test_post),
+
+    # render()函数，根据模板文件和传递给模板文件的字典类型的变量，生成一个HttpResponse对象返回
+    path('app2/test_render/', views.test_render, name='app2_test_render'),
+
+    # 通过一个绝对的或相对的URL，让浏览器跳转到指定的URL进行重定向
+    path('app2/test_redirect/', views.test_redirect, name='app2_test_redirect'),
+
+    # 通过定义get_absolute_url()方法 返回模型对外的url；使用reverse()函数做反向解析操作
+    path('app2/test_redirect_model/<int:id>/', views.test_redirect_model, name='app2_test_redirect_model'),
+    path('app2/userinfo/<int:id>/', views.userinfo, name='app2_userinfo'),
 
 ]

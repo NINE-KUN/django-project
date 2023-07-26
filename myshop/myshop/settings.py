@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app1',  # 注册创建的应用 名字与应用中的apps.py中name一致
+    'app2',
 ]
 
 MIDDLEWARE = [
