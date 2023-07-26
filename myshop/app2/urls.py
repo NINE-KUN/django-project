@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include, re_path
 from app2 import views
+from app2.views_class import IndexPageView,TestTemplateView,TestListView
 
 urlpatterns = [
     path('app2/index/', views.index),  # 定义了路由index/ 以及该路由指向的视图函数index()
@@ -18,8 +19,9 @@ urlpatterns = [
     # 后面跟任意位整数路由且第2个参数可以是字母、数字、下划线http://127.0.0.1:8000/app2/list/1&key=a/
     re_path('app2/list/(?P<page>\d+)&key=(?P<key>\w+)/', views.article_page, name='article_page'),
 
-    # 反向解析路由
+    # reverse()反向解析路由
     path('app2/url_reverse/', views.url_reverse, name='app2_url_reverse'),
+    path('app2/url_reverse1/', views.url_reverse1, name='app2_url_reverse1'),
 
     # HttpRequest用法
     path('app2/test_get/', views.test_get),
@@ -36,5 +38,11 @@ urlpatterns = [
     # 通过定义get_absolute_url()方法 返回模型对外的url；使用reverse()函数做反向解析操作
     path('app2/test_redirect_model/<int:id>/', views.test_redirect_model, name='app2_test_redirect_model'),
     path('app2/userinfo/<int:id>/', views.userinfo, name='app2_userinfo'),
+    path('app2/test_redirect_views/<int:id>/', views.test_redirect_views, name='app2_test_redirect_views'),
+
+    # 类试图 需要导入该应用views下的类
+    path('app2/index_page/', IndexPageView.as_view()),  # 视图类在调用时，只能是函数方式不能是类方式，所以需要将视图类通过as_view()转化为视图函数
+    path('app2/test_template_view/', TestTemplateView.as_view()),  # 视图类在调用时，只能是函数方式不能是类方式，所以需要将视图类通过as_view()转化为视图函数
+    path('app2/test_list_view/', TestListView.as_view()),  # 视图类在调用时，只能是函数方式不能是类方式，所以需要将视图类通过as_view()转化为视图函数
 
 ]
