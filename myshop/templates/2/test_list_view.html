@@ -21,6 +21,7 @@
 
     <table>
         <tr>
+<!--            page_obj为分页对象，在ListView类中属于固定用法-->
             {% if page_obj.has_previous %}
             <td>
                 <a href="?page={{ page_obj.previous_page_number }}">

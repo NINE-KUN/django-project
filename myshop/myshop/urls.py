@@ -23,4 +23,5 @@ urlpatterns = [
     path('index/', views.index),  # 定义了路由index/ 以及该路由指向的视图函数index()
     path('', include('app1.urls')),  # 定义了子路由
     path('', include('app2.urls')),
+    path('',include('app3.urls'))
 ]

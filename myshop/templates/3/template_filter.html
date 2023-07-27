@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+str1: {{ str1 }}<br>
+小写转大写：{{ str1|upper }}<br>
+<br>
+str2: {{ str2 }}<br>
+大写转小写：{{ str2|lower }}<br>
+<br>
+slice_str: {{ slice_str }}<br>
+切片操作(2:4)：{{ slice_str|slice:"2:4" }}<br>
+<br>
+time_str: {{ time_str }}<br>
+时间格式化：{{ time_str|date:"Y-m-d G:i:s" }}<br>
+</body>
+</html>

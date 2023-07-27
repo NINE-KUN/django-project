@@ -2,6 +2,7 @@ from django.views import View
 from django.http import HttpResponse
 from django.views.generic import TemplateView, ListView, DetailView
 from .models import *
+
 """等同于
 def index_page(request):
     if request.method == 'GET':
@@ -39,10 +40,12 @@ class TestTemplateView(TemplateView):
 
 class TestListView(ListView):
     """别表视图类---ListView"""
+    # 设置模型
     model = UserBaseInfo
+    # 设置模板文件
     template_name = "2/test_listview.html"
     # 设置模板变量
-    # context_object_name="users"
+    context_object_name = "users"
     # 每页显示的条数
     paginate_by = 1
 
@@ -60,3 +63,15 @@ class TestListView(ListView):
         context["info"] = "ListView变量可以传递到模板"
         print(context)
         return context
+
+
+class TestDetailView(DetailView):
+    """详细视图类---DetailView"""
+    # 设置模型
+    model = UserBaseInfo
+    # 设置模板文件
+    template_name = "2/test_detailview.html"
+    # 设置模板变量
+    context_object_name = "users"
+    # 代表路由地址中某个参数，该参数用于保存记录得主键字段值
+    pk_url_kwarg = 'userid'
